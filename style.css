@@ -8,21 +8,21 @@
   --card-title-border-color: #746615;
   --card-color-primary: #f7dd43;
   --card-bg-color: #1d1c19;
-  --bg: url(./assets/bg-yellow.svg);
+  --bg: url(assets/bg-yellow.svg);
 }
 
-body.blue {
+.blue {
   --card-title-border-color: #338af3;
   --card-color-primary: #338af3;
   --card-bg-color: #202024;
-  --bg: url(./assets/bg-blue.svg);
+  --bg: url(assets/bg-blue.svg);
 }
 
-body.green {
+.green {
   --card-title-border-color: #047c3f;
   --card-color-primary: #047c3f;
   --card-bg-color: #1a1f1b;
-  --bg: url(./assets/bg-green.svg);
+  --bg: url(assets/bg-green.svg);
 }
 
 ul {
@@ -30,7 +30,11 @@ ul {
 }
 
 body {
-  background: #121214 var(--bg) no-repeat top center/cover;
+  background-color: #121214;
+  background-image: var(--bg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 body * {
@@ -44,19 +48,39 @@ body * {
 }
 
 header {
-  margin-bottom: 63px;
+  margin-bottom: 0px;
   text-align: center;
+}
+
+header img {
+  height: 300px;
+  width: 300px;
+  animation: appear 1.05s forwards;
 }
 
 #cards {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 32px;
+}
+
+.names {
+  display: flex;
+  justify-content: space-between;
+  color: #e1e1e6;
+  font-size: 7px;
+  text-transform: uppercase;
+}
+
+h1 {
+  text-align: center;
 }
 
 .card {
   padding: 32px 23px;
   text-align: center;
+  height: fit-content;
 
   background: var(--card-bg-color);
   border-bottom: 2px solid var(--card-color-primary);
@@ -100,7 +124,12 @@ header {
   justify-content: space-between;
 }
 
-.card ul li + li {
+.card ul li img {
+  width: 50px;
+  height: 50px;
+}
+
+.card ul div + li {
   padding-top: 24px;
   border-top: 1px solid #323238;
 }
@@ -113,12 +142,14 @@ header {
   color: #e1e1e6;
 }
 
+#app .names h1:hover,
 .card h2:hover,
 .card ul li strong:hover,
 .card ul li img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
+#app .names h1,
 .card h2,
 .card ul li strong,
 .card ul li img {
@@ -127,7 +158,7 @@ header {
 
 .card {
   opacity: 0;
-  animation: appear 0.2s forwards;
+  animation: appear 0.9s forwards;
 }
 
 @keyframes appear {
@@ -143,8 +174,24 @@ header {
 
 @media (min-width: 700px) {
   #cards {
-    max-width: 670px;
     flex-direction: row;
     flex-wrap: wrap;
+    max-width: 1200px;
   }
+}
+
+.button {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.button img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.button {
+  opacity: 0;
+  animation: appear 0.9s forwards;
 }
